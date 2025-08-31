@@ -1,9 +1,8 @@
-version: '3'
-
 services:
 
 # DEV
   pacmusic-dev:
+    profiles: ["dev"]
     build:
       context: ./app
       dockerfile: Dockerfile
@@ -19,6 +18,7 @@ services:
 
 # STG
   pacmusic-stg:
+    profiles: ["stg"]
     build:
       context: ./app
       dockerfile: Dockerfile
@@ -34,6 +34,7 @@ services:
 
 # PROD
   pacmusic-prod:
+    profiles: ["prod"]
     image: "${APP_IMAGE}:${APP_TAG}"
     container_name: pacmusic-prod
     environment:

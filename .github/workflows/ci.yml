@@ -25,7 +25,7 @@ jobs:
 
       - name: Build and Run Container
         run: |
-          sudo docker compose up --build --detach pacmusic-dev 
+          sudo docker compose --profile dev up --build --detach
       
       - name: Wait for application and check health
         run: |
