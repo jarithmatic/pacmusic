@@ -10,6 +10,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Debug Available Secrets
+        run: echo "${{ toJSON(secrets) }}"
+
       - name: Execute Deployment Command
         uses: appleboy/ssh-action@v1
         env:
@@ -36,7 +39,7 @@ jobs:
               git clone $GIT_URL $APP_STG_PATH
               cd $APP_STG_PATH 
             fi
-            
+
             # Create or Update the .env file
             echo "APP_STG_PORT=$APP_STG_PORT" > .env
             echo "MINIO_STG_ENDPOINT=$MINIO_STG_ENDPOINT" >> .env
