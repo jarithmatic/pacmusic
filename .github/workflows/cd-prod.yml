@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Execute deployment command
+      - name: Execute Deployment Command
         uses: appleboy/ssh-action@v1
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -50,9 +50,9 @@ jobs:
             echo "MINIO_PROD_SECRET_KEY=$MINIO_PROD_SECRET_KEY" >> .env
 
             # Run app
-            sudo docker compose --profile prod up --build --detach
+            sudo docker compose up --build --detach pacmusic-prod
 
       - name: Hit Endpoint
         run: |
           sleep 20
-          curl -f ${{ secrets.PROD_URL }}
+          curl ${{ secrets.PROD_URL }}

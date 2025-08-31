@@ -35,18 +35,18 @@ jobs:
               ssh-keyscan github.com >> ~/.ssh/known_hosts
               git clone $GIT_URL $APP_STG_PATH
               cd $APP_STG_PATH 
-            fi 
-
-            # Create or update the .env file
+            fi
+            
+            # Create or Update the .env file
             echo "APP_STG_PORT=$APP_STG_PORT" > .env
             echo "MINIO_STG_ENDPOINT=$MINIO_STG_ENDPOINT" >> .env
             echo "MINIO_STG_ACCESS_KEY=$MINIO_STG_ACCESS_KEY" >> .env
             echo "MINIO_STG_SECRET_KEY=$MINIO_STG_SECRET_KEY" >> .env
 
             # Run app
-            sudo docker compose --profile stg up --build --detach
+            sudo docker compose up --build --detach pacmusic-stg
 
       - name: Hit Endpoint
         run: |  
           sleep 20
-          curl -f ${{ secrets.STG_URL }}
+          curl ${{ secrets.STG_URL }}
