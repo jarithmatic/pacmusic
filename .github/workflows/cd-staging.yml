@@ -19,7 +19,7 @@ jobs:
           MINIO_STG_ENDPOINT: ${{ secrets.MINIO_STG_ENDPOINT }}
           MINIO_STG_ACCESS_KEY: ${{ secrets.MINIO_STG_ACCESS_KEY }}
           MINIO_STG_SECRET_KEY: ${{ secrets.MINIO_STG_SECRET_KEY }}
-          APP_STG_PORT: ${{ vars.APP_STG_PORT }}
+          APP_STG_PORT: ${{ secrets.APP_STG_PORT }}
 
         with:
           host: ${{ secrets.SSH_HOST_STAGING }}
