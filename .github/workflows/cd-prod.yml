@@ -10,6 +10,7 @@ jobs:
   deploy-production:
     name: Deploy to Production Server
     runs-on: ubuntu-latest
+    environment: production
 
     steps:
       - name: Execute Deployment Command
