@@ -8,20 +8,18 @@ jobs:
   deploy-staging:
     name: Deploy to Staging Server
     runs-on: ubuntu-latest
-
+    environment: staging
+    
     steps:
-      - name: Debug Available Secrets
-        run: echo "${{ toJSON(secrets) }}"
-
       - name: Execute Deployment Command
         uses: appleboy/ssh-action@v1
         env:
-          APP_STG_PATH: ${{ vars.APP_PATH_STAGING }}
-          GIT_URL: ${{ vars.GIT_URL }}
+          APP_STG_PATH: ${{ vars.APP_STG_PATH }}
+          GIT_URL: ${{ secrets.GIT_URL }}
           MINIO_STG_ENDPOINT: ${{ secrets.MINIO_STG_ENDPOINT }}
           MINIO_STG_ACCESS_KEY: ${{ secrets.MINIO_STG_ACCESS_KEY }}
           MINIO_STG_SECRET_KEY: ${{ secrets.MINIO_STG_SECRET_KEY }}
-          APP_STG_PORT: ${{ vars.APP_STG_PORT }}
+          APP_STG_PORT: ${{ secrets.APP_STG_PORT }}
 
         with:
           host: ${{ secrets.SSH_HOST_STAGING }}
