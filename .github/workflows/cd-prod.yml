@@ -17,6 +17,7 @@ jobs:
         uses: appleboy/ssh-action@v1
         env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
           APP_PROD_PATH: ${{ vars.APP_PROD_PATH }}
           APP_PROD_PORT: ${{ secrets.APP_PROD_PORT }}
           APP_TAG: ${{ github.event.release.tag_name }}
@@ -29,7 +30,7 @@ jobs:
           host: ${{ secrets.SSH_HOST_PRODUCTION }}
           username: ${{ secrets.SSH_USER_NAME_PRODUCTION }}
           key: ${{ secrets.SSH_PRIVATE_KEY_PRODUCTION }}
-          envs: DOCKERHUB_USERNAME, APP_PROD_PATH, APP_PROD_PORT, APP_TAG, GIT_URL, MINIO_PROD_ENDPOINT, MINIO_PROD_ACCESS_KEY, MINIO_PROD_SECRET_KEY
+          envs: DOCKERHUB_USERNAME,DOCKERHUB_TOKEN,APP_PROD_PATH,APP_PROD_PORT,APP_TAG,GIT_URL,MINIO_PROD_ENDPOINT,MINIO_PROD_ACCESS_KEY,MINIO_PROD_SECRET_KEY
           script: |
 
             if [[ -d "/home/ubuntu/${APP_PROD_PATH}" ]]; then
