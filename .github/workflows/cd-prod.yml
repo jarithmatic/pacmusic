@@ -20,7 +20,7 @@ jobs:
           APP_PROD_PATH: ${{ vars.APP_PROD_PATH }}
           APP_PROD_PORT: ${{ secrets.APP_PROD_PORT }}
           APP_TAG: ${{ github.event.release.tag_name }}
-          GIT_URL: ${{ vars.GIT_URL }}
+          GIT_URL: ${{ secrets.GIT_URL }}
           MINIO_PROD_ENDPOINT: ${{ secrets.MINIO_PROD_ENDPOINT }}
           MINIO_PROD_ACCESS_KEY: ${{ secrets.MINIO_PROD_ACCESS_KEY }}
           MINIO_PROD_SECRET_KEY: ${{ secrets.MINIO_PROD_SECRET_KEY }}
