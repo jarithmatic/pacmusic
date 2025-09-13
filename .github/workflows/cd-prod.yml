@@ -52,7 +52,8 @@ jobs:
             echo "MINIO_PROD_SECRET_KEY=$MINIO_PROD_SECRET_KEY" >> .env
 
             # Run app
-            sudo docker compose up --build --detach pacmusic-prod
+            sudo docker compose up --build --detach pacmusic-prod-1
+            sudo docker compose up --build --detach pacmusic-prod-2
 
       - name: Hit Endpoint
         run: |
